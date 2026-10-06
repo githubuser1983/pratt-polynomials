@@ -1,0 +1,236 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern,microtype,amsmath,amssymb,mathtools,graphicx}
+\usepackage[a4paper,left=22mm,right=22mm,top=22mm,bottom=22mm]{geometry}
+\usepackage{booktabs,array,tabularx,fancyhdr,titlesec,xcolor}
+\usepackage{hyperref}
+\definecolor{navy}{HTML}{1E4F6D}
+\definecolor{muted}{HTML}{5D7182}
+\definecolor{pale}{HTML}{EAF0F5}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy,
+  pdftitle={Pratt Polynomials as an Argument of the Zeta Function},
+  pdfsubject={Zeros, height mapping, and equivalent formulations of the Riemann Hypothesis}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt}
+\setlength{\headheight}{15pt}
+\setlength{\emergencystretch}{1.5em}
+\renewcommand{\arraystretch}{1.16}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{muted}Pratt Polynomials \textperiodcentered\ Composition with the Zeta Function}
+\fancyfoot[R]{\small\color{muted}\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection.}{.55em}{}
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\newcommand{\Zcal}{\mathcal Z}
+\newcommand{\Xcal}{\mathcal X}
+\begin{document}
+\thispagestyle{fancy}
+
+{\fontsize{27}{31}\selectfont\bfseries\color{navy}
+Pratt Polynomials as an Argument of the Zeta Function\par}
+\vspace{8pt}
+{\large\bfseries Zeros, height mapping, and two equivalent forms of the Riemann Hypothesis\par}
+\vspace{7pt}
+{\large 5 October 2026 \textperiodcentered\ Supplement to the study of real and complex indices\par}
+
+The proposed substitution is mathematically well defined and yields exact statements about the preimages of zeta zeros. In the critical strip, for positive real $x$, real parts are preserved. This gives an equivalent formulation of the Riemann Hypothesis, but not a proof. For a fixed complex index, concrete polynomial equations for the zeros in $x$ also arise. The derivations below proceed directly from the given family; no claim of novelty in the literature is made.
+
+\section{Definition and Meaning of the Substitution}
+We use $f_1=1$, $f_2=x$, $f_p=1+f_{p-1}$ for odd primes and $f_{ab}=f_af_b$ for positive integer indices. In addition, $f_0=0$, $f_{-n}=-f_n$, and the linear interpolation are used:
+\[
+ f_r(x)=(1-t)f_n(x)+t f_{n+1}(x),\qquad n=\lfloor r\rfloor,\quad t=r-n.
+\]
+For $s=a+ib$, the complex definition requested by the user is
+\[
+ f_s(x)=f_a(x)+i f_b(x).
+\]
+We have $f_r=r$ for $|r|\le1$, $f_{-r}=-f_r$, and $f_s(2)=s$. The new function is therefore
+\[
+ \Zcal(s,x)=\zeta(f_s(x)),\qquad \Zcal(s,2)=\zeta(s).
+\]
+Here the zeta function is understood via its meromorphic continuation. Its Dirichlet series and Euler product may be used only in the region $\Re f_s(x)>1$ [1]. In particular, no zero argument in the critical strip can be obtained from the Dirichlet series, which does not converge there.
+
+The two variables must be kept separate: for fixed index $s$, $f_s$ is a polynomial in $x$; for fixed $x$, the map $s\mapsto f_s(x)$ is piecewise affine in the real and imaginary parts.
+
+\section{The Real Parts Are Preserved in the Critical Strip}
+\textbf{Theorem 1. Exact correspondence of the nontrivial zeros.}
+For a fixed real $x$, set $h_x(t)=f_t(x)$. If $s=\sigma+it$ with $0<\sigma<1$, then $f_\sigma(x)=\sigma$ and $h_x(t)$ is real. Hence
+\[
+ \Zcal(\sigma+it,x)=\zeta\!\left(\sigma+i h_x(t)\right).
+\]
+If $\rho=\beta+i\gamma$ is a nontrivial zeta zero, then its preimages in the critical strip are exactly the points
+\[
+ s=\beta+it,\qquad h_x(t)=\gamma.
+\]
+
+\textbf{Proof.} The real part of the inserted zeta argument is exactly $\sigma$. Thus the equation $f_s(x)=\rho$ is equivalent to $\sigma=\beta$ and $h_x(t)=\gamma$. In the critical strip there are only nontrivial zeta zeros [2]. This makes the correspondence complete.
+
+\textbf{Theorem 2. Every zeta zero has such a preimage for $x>0$.}
+For every fixed real $x>0$, the map $h_x:\mathbb R\to\mathbb R$ is surjective.
+
+\textbf{Proof.} The interpolation is continuous, odd, and satisfies $h_x(0)=0$. Since $f_3=x+1$ and the integer family is multiplicative,
+\[
+ h_x(3^k)=(x+1)^k\longrightarrow +\infty.
+\]
+The intermediate value theorem on $[0,3^k]$ gives every positive level, and oddness gives every negative level. Monotonicity is not needed.
+
+\textbf{Corollary 3. An exact equivalence to the Riemann Hypothesis.}
+For every arbitrarily fixed real $x>0$, the following statements are equivalent:
+\begin{itemize}
+\item Every nontrivial zero of $\zeta$ has real part $1/2$.
+\item Every zero of $s\mapsto\Zcal(s,x)$ inside $0<\Re s<1$ has real part $1/2$.
+\end{itemize}
+\textbf{Proof.} The first statement implies the second by Theorem 1. Conversely, by Theorem 2 every nontrivial zeta zero has a preimage with the same real part. If all these preimages lie on the critical line, then the original zeros lie there as well.
+
+This equivalence is the essential consequence of the substitution. It imposes no additional restriction on the real parts and does not decide the Riemann Hypothesis.
+
+\textbf{Why the region matters.} For $x\ge1$, one even has $f_a(x)\in(0,1)$ if and only if $a\in(0,1)$. Indeed, for positive integers $n$, $f_n(x)\ge1$, hence also for $a\ge1$; negative indices give nonpositive values. Thus, for $x\ge1$, all preimages of nontrivial zeta zeros lie in the input region $0<\Re s<1$.
+
+For $0<x<1$, additional preimages outside this strip can occur. At $x=1/2$, for example, $f_2(x)=1/2$. Given a known zero $1/2+i\gamma$, Theorem 2 gives a $t$ with $h_{1/2}(t)=\gamma$, hence $\Zcal(2+it,1/2)=0$. The zeta argument still has real part $1/2$.
+
+\section{The Height Map Can Produce Multiple Preimages}
+On every interval $[n,n+1]$, the equation $h_x(t)=\gamma$ can be solved linearly. If
+\[
+ D_n(x)=f_{n+1}(x)-f_n(x)
+\]
+does not vanish, the solution is
+\[
+ t=n+\frac{\gamma-f_n(x)}{D_n(x)}.
+\]
+It lies in the interval exactly when $\gamma$ lies between the two endpoint values. If $D_n(x)=0$, either there is no solution or the entire interval consists of solutions.
+
+The number of preimages therefore gives no new statement about the number of original zeta zeros.
+
+\textbf{Concrete example $x=3$.} The support values at $n=7,8,9,10$ are $13,27,16,30$. Hence the first positive zeta-zero height has one positive preimage, whereas the second has three. The known heights are given in [4]:
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Original height $\gamma$} & \textbf{Positive heights $t$ of the preimages at $x=3$}\\
+\midrule
+$14.1347251417\ldots$ & $7.0810517958\ldots$\\
+$21.0220396388\ldots$ & $7.5730028313\ldots,\ 8.5434509419\ldots,\ 9.3587171171\ldots$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+All associated indices here have real part $1/2$. The list is complete: for $t\ge0$, $h_3(t)\ge t$, because the positive support polynomials have nonnegative coefficients and $f_n(3)\ge f_n(2)=n$. Thus only finitely many intervals below the respective height need to be checked; their endpoint values were evaluated. The decimal values are numerical illustrations, not certified enclosures.
+
+For $x=1$, every level $\gamma>1$ even has infinitely many positive preimages: $h_1(2^k)=1$, while $h_1(3^k)=2^k$ grows without bound. Arbitrarily far to the right there are therefore alternating values below and above the level. For $0<x<1$, the same holds for every $\gamma>0$, because $h_x(2^k)=x^k\to0$ and $h_x(3^k)\to\infty$. This shows how strongly the substitution changes the height ordering.
+
+\section{For a Fixed Index, Zeros Are Pulled Back Polynomially}
+\textbf{Theorem 4. Preimages and multiplicities in the variable $x$.}
+Let $P(x)=f_s(x)$, for a fixed complex index $s$, be a nonconstant polynomial of degree $d$. Then $x\mapsto\zeta(P(x))$ is meromorphic. To every zeta zero $\rho$ there correspond exactly $d$ solutions of $P(x)=\rho$, counted with their polynomial multiplicities.
+
+If $\zeta$ has a zero of order $m$ at $\rho$ and $P-\rho$ has a zero of order $k$ at $x_0$, then
+\[
+ \operatorname{ord}_{x_0}\zeta(P(x))=mk.
+\]
+\textbf{Proof.} Locally, $\zeta(w)=(w-\rho)^m g(w)$ with $g(\rho)\ne0$ and $P(x)-\rho=(x-x_0)^k q(x)$ with $q(x_0)\ne0$. Substitution gives the stated order. The number of polynomial preimages follows from the Fundamental Theorem of Algebra.
+
+The only poles lie at $P(x)=1$. Their order is the multiplicity of the corresponding zero of $P-1$, because $\zeta$ has a simple pole at 1 [1]. If $P'(x_0)\ne0$, the residue is $1/P'(x_0)$. If $P$ is constant, this exceptional case must be treated separately; in particular, when $P\equiv1$ the composition is not a meromorphic function with isolated poles.
+
+\textbf{Relation to the Pratt zeros.} A zero of $f_s$ itself gives $\zeta(f_s(x))=\zeta(0)=-1/2$ [4]. Thus the irreducibility and zero locations of the original polynomials concern equations different from $f_s(x)=\rho$. Those properties alone imply no critical-line statement for $\zeta$.
+
+\textbf{Example 5. Three exact preimages of the first zeta zero.}
+Let $\rho_1=1/2+i\gamma_1$ be the first positive zeta zero, with $\gamma_1=14.1347251417\ldots\in(14,15)$ [4]. The recursion gives
+\[
+ Q(x):=f_{14}(x)=x^3+x^2+x,\qquad f_{15}(x)=Q(x)+1.
+\]
+Hence, exactly and without having to determine the height algebraically,
+\[
+ f_{\rho_1}(x)=\frac12+i\bigl(Q(x)+\gamma_1-14\bigr),
+\]
+\[
+ f_{\rho_1}(x)-\rho_1=i\bigl(Q(x)-14\bigr)
+ =i(x-2)(x^2+3x+7).
+\]
+The three preimages of this one zeta zero are therefore
+\[
+ x=2,\qquad x=\frac{-3+i\sqrt{19}}2,\qquad x=\frac{-3-i\sqrt{19}}2.
+\]
+At all three points, $\Zcal(\rho_1,x)=0$. The polynomial preimages are simple, so the multiplicity of each composed zero is exactly the multiplicity of $\rho_1$. This factorization therefore does not prove simplicity of a zeta zero.
+
+\section{Functional Equation and Analytic Limitation}
+The completed zeta function is the entire function [3]
+\[
+ \xi(w)=\frac12 w(w-1)\pi^{-w/2}\Gamma(w/2)\zeta(w),\qquad
+ \xi(w)=\xi(1-w).
+\]
+Its zeros are exactly the nontrivial zeta zeros; the apparent special points in the product representation are handled by continuation. For $0\le\Re s\le1$, even for complex $x$,
+\[
+ f_{1-s}(x)=1-f_s(x).
+\]
+Consequently, $\Xcal(s,x)=\xi(f_s(x))$ inherits in this strip the symmetry
+\[
+ \Xcal(1-s,x)=\Xcal(s,x).
+\]
+For real $x$, conjugation symmetry is added. Such a symmetry, however, also permits pairs of zeros away from the critical line; it forces no individual zero onto that line.
+
+\textbf{The decisive analytic limitation.} For $x\ne2$, the map $s\mapsto\Zcal(s,x)$ is generally not holomorphic. On an open cell with $0<\sigma<1$ and $n<t<n+1$, outside the poles,
+\[
+ \frac{\partial\Zcal}{\partial\overline s}
+ =\frac12\zeta'(f_s(x))\bigl(1-D_n(x)\bigr).
+\]
+\textbf{Proof.} On the cell, $\partial_\sigma f_s=1$ and $\partial_t f_s=iD_n$. The Wirtinger derivative $\partial_{\overline s}=(\partial_\sigma+i\partial_t)/2$ gives the formula by the chain rule. Already on $1<t<2$, $D_1=x-1$, so the additional factor is $(2-x)/2$. For $x\ne2$, the derivative does not vanish identically there, because $\zeta'$ does not vanish on an entire nonconstant interval of arguments.
+
+At $x=2$, by contrast, we recover the original meromorphic function $\zeta(s)$. Analytic tools in the index variable, such as the argument principle, therefore do not transfer directly for other $x$. In the variable $x$, the meromorphic structure described in Theorem 4 remains intact.
+
+\section{A Purely Geometric, Cubic Form of the Hypothesis}
+A further exact reformulation needs only the polynomial $Q$ from Example 5. Choose the fixed index $s_0=1/2+14i$; this index need not itself be a zeta zero. Then
+\[
+ f_{s_0}(x)=\frac12+iQ(x),\qquad
+ W(x)=\xi\!\left(\frac12+iQ(x)\right).
+\]
+The function $W$ is entire in $x$. Writing $x=u+iv$, we obtain
+\[
+ \Re\!\left(\frac12+iQ(u+iv)\right)
+ =\frac12-v\bigl(3u^2-v^2+2u+1\bigr).
+\]
+The preimage of the critical line is therefore the following union of the real axis with two hyperbola branches:
+\[
+ C=\{u+iv:v=0\}\ \cup\ \{u+iv:v^2=3u^2+2u+1\}.
+\]
+
+\textbf{Theorem 6. Equivalence with a zero curve in the $x$-plane.}
+The Riemann Hypothesis holds if and only if all zeros of $W$ lie on $C$.
+
+\textbf{Proof.} If the hypothesis holds, then every zeta argument at a zero of $W$ has real part $1/2$, so by the formula above $x$ lies on $C$. Conversely, every nontrivial zeta zero $\rho$ has a preimage under the nonconstant polynomial $1/2+iQ$. If all zeros of $W$ lie on $C$, then this $\rho$ also has real part $1/2$.
+
+For every real $y$, the equation $Q(x)=y$ has exactly one real and two conjugate nonreal solutions. Indeed, $Q'(u)=3u^2+2u+1>0$ on the real axis. The three solutions are simple: the critical values of $Q$ are $(-7\pm4i\sqrt2)/27$ and hence are not real. Under the Riemann Hypothesis, each nontrivial zeta zero is distributed over these three curve points, with its multiplicity unchanged at each point.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.72\textwidth]{pratt-zeta-curve-en.png}
+\caption{Blue curve: the exact preimage of the critical line under $1/2+iQ(x)$. Markers: numerical preimages of the first conjugate pair of zeta zeros. The curves also contain points that are not zeros.}
+\end{figure}
+
+The curve is derived exactly. The six marked points are numerically computed preimages of the two known zeros $1/2\pm i\gamma_1$ under $1/2+iQ$. They illustrate the equivalence and do not replace a proof that all zeros lie on the curve.
+
+\section{Result and the Concrete Remaining Task}
+The substitution gives, first, a complete zero correspondence in the critical strip; second, explicit polynomial preimages with controlled multiplicities; and third, the cubic curve formulation of Theorem 6. A false Riemann Hypothesis would likewise appear in each of these equivalent pictures as a zero away from the corresponding line or curve.
+
+For a proof, an independent property would now be needed that forces all zeros of
+\[
+ W(x)=\xi\!\left(\frac12+i(x^3+x^2+x)\right)
+\]
+onto $C$, or equivalently forces all zeros of $\Zcal$ in the input strip onto $\Re s=1/2$. Neither the interpolation nor integer multiplicativity nor the irreducibility of the prime-index polynomials has so far supplied such a property.
+
+\clearpage
+\section*{References}
+\textbf{Verification.} The identities for $f_{14}$ and $f_{15}$, the factorization of $Q-14$, and the value $Q'(2)=17$ were checked using exact integer polynomial arithmetic. The decimal examples and curve points were computed numerically; supplementary Euler-Maclaurin evaluations reproduced residuals below $2\cdot10^{-14}$ at the first two known zeta zeros. This is a plausibility check, not a certified zero enclosure. The theorems rely on the stated proofs.
+
+[1] NIST Digital Library of Mathematical Functions, \S25.2: definition and meromorphic continuation of the Riemann zeta function. \url{https://dlmf.nist.gov/25.2}
+
+[2] NIST Digital Library of Mathematical Functions, \S25.10: trivial and nontrivial zeros, critical strip, and Riemann Hypothesis. \url{https://dlmf.nist.gov/25.10}
+
+[3] NIST Digital Library of Mathematical Functions, \S25.4: functional equation and definition of the completed zeta function. \url{https://dlmf.nist.gov/25.4}
+
+[4] Official mpmath documentation, Riemann zeta function: numerical values of the first zeros and $\zeta(0)$. \url{https://mpmath.readthedocs.io/en/latest/functions/zeta.html}
+
+The definition of the Pratt family comes from the attached photograph and the user's supplementary specifications. This note studies the resulting composition; the proved zero correspondences do not require an irreducibility hypothesis.
+
+\end{document}

@@ -1,0 +1,701 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx}
+
+\usepackage[margin=25mm]{geometry}
+
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+
+\setlength{\parskip}{5pt}
+
+\allowdisplaybreaks
+
+\newcommand{\fitmath}[1]{\begingroup\setbox0=\hbox{$\displaystyle #1$}\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\box0\fi\endgroup}
+
+\begin{document}
+
+{\LARGE\bfseries Pratt Polynomials with Real and Complex Index\par}\bigskip
+
+\textbf{Linear interpolation, irreducibility, and extension through real and imaginary parts}
+
+
+5 October 2026 · Based on the attached texts by Orges Leka
+
+
+This note studies the family proposed in the photograph, supplemented by the subsequently specified values at negative integers and at 0, as well as by the complex extension through real and imaginary parts. The statements are either proved or explicitly identified as numerical illustrations or as questions for further investigation. No claim of priority or novelty in the literature is made.
+
+
+\section*{1. Starting Point and Scope}
+
+For positive integers, the given recursion is $f_1=1$, $f_2=x$, $f_p=1+f_{p-1}$ for odd primes, together with complete multiplicativity $f_{ab}=f_af_b$. In particular, the polynomials are monic and have nonnegative integer coefficients; moreover, $f_n(2)=n$.
+
+
+The first attached text [1] proves the irreducibility of all prime-index polynomials over $\mathbb Q$. The univariate half-plane proof is also documented in Jonathan Love's original answer [3]. Thus the hypothesis (PI), still explicitly assumed in the second attached text [2], is available; its conclusion concerning infinitely many irreducible compositions for every prime index can therefore be stated using [1] without this additional assumption.
+
+
+In accordance with the user's supplementary specification, for positive integers we set:
+
+
+\[
+\fitmath{f_0(x)=0,\qquad f_{-n}(x)=-f_n(x)\quad(n\geq1).}
+\]
+
+
+For every real parameter, we now write:
+
+
+\[
+\fitmath{n=\lfloor r\rfloor,\qquad t=r-n,\qquad f_r(x)=(1-t)f_n(x)+t f_{n+1}(x).}
+\]
+
+
+\textbf{Scope.} After this extension, the formula is defined for all $r\in\mathbb R$. In particular, $f_r=r$ for $|r|\leq1$ and $f_{-r}=-f_r$ for all real $r$. It therefore suffices at first to study the nonconstant polynomials for $r>1$; their negative counterparts differ only by the factor $-1$. The theorems in Sections 2 through 9 are stated for $r\geq1$. The complex definition and its consequences are given in Section 11.
+
+
+On a closed cell $[n,n+1]$, we may also use $0\leq t\leq1$; the two representations at an integer boundary yield the same polynomial.
+
+
+\section*{2. Coefficients, Degree, and Positive Arguments}
+
+\subsection*{Theorem 1. Evaluation and coefficient field}
+
+For every $r\geq1$, $f_r$ has nonnegative real coefficients, and:
+
+
+\[
+\fitmath{f_r(2)=r,\qquad \mathbb Q(\text{coefficients of }f_r)=\mathbb Q(r).}
+\]
+
+
+\[
+\fitmath{f_r\in\mathbb Q[x]\ \Longleftrightarrow\ r\in\mathbb Q,\qquad f_r\in\mathbb Z[x]\ \Longleftrightarrow\ r\in\mathbb Z.}
+\]
+
+
+\textbf{Proof.} The coefficients are convex combinations of nonnegative integers. Evaluation at 2 gives $(1-t)n+t(n+1)=n+t=r$. Every coefficient lies in $\mathbb Q(r)$; conversely, $r=f_r(2)$ is a rational linear combination of the coefficients. The two equivalences follow by evaluation and from the original integer definition. In particular, the map $r\mapsto f_r$ is injective.
+
+
+\subsection*{Theorem 2. Constant term and zeros on the positive axis}
+
+\[
+\fitmath{f_r(0)=\operatorname{dist}(r,2\mathbb Z).}
+\]
+
+
+Here the right-hand side denotes the distance to the nearest even integer. In particular, 0 is a zero of $f_r$ if and only if $r$ is a positive even integer. For $r>1$ and $x>0$, one has $f_r(x)>0$ and $f'_r(x)>0$; for $x\geq0$, $f''_r(x)\geq0$. Hence there are no positive real zeros; as a function of $x>0$, every nonconstant $f_r$ is strictly increasing and convex.
+
+
+\textbf{Proof.} For odd $n$, $f_n(0)=1$, because all odd prime-index polynomials have constant term 1. For even $n$, the product contains the factor $x^{v_2(n)}$, so $f_n(0)=0$. The interpolation between 0 and 1 is exactly the indicated triangular function. Positivity and the statements about the derivatives follow immediately from the coefficients. Nonconstancy for $r>1$ likewise follows without any possible cancellation of coefficients.
+
+
+\subsection*{Theorem 3. Degree and monicity}
+
+Set $d_n=\deg f_n$. For $0<t<1$:
+
+
+\[
+\fitmath{\deg f_{n+t}=\max(d_n,d_{n+1})\leq\lfloor\log_2(n+1)\rfloor.}
+\]
+
+
+If $d_n=d_{n+1}$, then $f_{n+t}$ is monic. If $d_n<d_{n+1}$, its leading coefficient is $t$; if $d_n>d_{n+1}$, it is $1-t$. At the integer support points, all $f_n$ are monic.
+
+
+\textbf{Proof.} The highest-degree coefficients cannot cancel. Since $f_n$ is monic and has nonnegative coefficients, $n=f_n(2)\geq2^{d_n}$. Equality holds if and only if $f_n=x^{d_n}$, hence exactly for powers of two, including $n=1=2^0$.
+
+
+The degree is neither continuous nor monotone in $r$. For example, $f_3=x+1$ has degree 1, whereas every $f_r$ with $3<r<4$ has degree 2. Likewise, $\deg f_8=3$, but $\deg f_9=2$. The coefficients nevertheless remain continuous at these points.
+
+
+\section*{3. Dependence on the Parameter and Limits of the Interpolation}
+
+\subsection*{Theorem 4. Continuity and kinks}
+
+The function $(r,x)\mapsto f_r(x)$ is continuous on $[1,\infty)\times\mathbb C$. On every open parameter interval $(n,n+1)$, it is affine in $r$, with:
+
+
+\[
+\fitmath{\frac{\partial f_r(x)}{\partial r}=f_{n+1}(x)-f_n(x).}
+\]
+
+
+At an integer $n\geq2$, the two parameter derivatives agree exactly for those $x$ for which:
+
+
+\[
+\fitmath{f_{n+1}(x)-2f_n(x)+f_{n-1}(x)=0.}
+\]
+
+
+At $x=2$, all kinks disappear: $f_r(2)=r$. This evaluation point is the only real or complex point at which the parameter function is differentiable for all $r>1$. Indeed, already at $n=2$, the second difference is $2-x$.
+
+
+Immediately before every odd prime $p$, the interpolation simplifies to:
+
+
+\[
+\fitmath{f_r(x)=f_{p-1}(x)+r-p+1\qquad(p-1\leq r\leq p).}
+\]
+
+
+Thus the left parameter derivative at $p$ is the constant polynomial 1. The right derivative equals $-1$ at $x=0$, so the curve in the space of polynomials has a genuine kink at every odd prime.
+
+
+\subsection*{Theorem 5. Global parameter monotonicity only at 2}
+
+For a fixed real $x$, the map $r\mapsto f_r(x)$ is monotone nondecreasing on $[1,\infty)$ if and only if $x=2$.
+
+
+\textbf{Proof.} Monotonicity of the interpolation is equivalent to monotonicity of the sequence $g(n)=f_n(x)$. From $g(1)=1\leq g(2)=x$ it follows that $x\geq1$. The case $x=1$ fails because $g(3)=2>g(4)=1$. For $x>1$, set $c=\log_2 x$. For every $m\geq2$ and $j\geq1$, let $k_j=\lfloor j\log_2 m\rfloor$. Monotonicity and multiplicativity give:
+
+
+\[
+\fitmath{x^{k_j}\leq g(m)^j\leq x^{k_j+1}.}
+\]
+
+
+Taking logarithms, dividing by $j$, and passing to the limit gives $g(m)=m^c$. With $m=3$, this yields $x+1=x^{\log_2 3}$. The function $x^{\log_2 3}-x-1$ is strictly increasing for $x\geq1$ and vanishes at 2; hence $x=2$. The converse follows from $f_r(2)=r$.
+
+
+\subsection*{Theorem 6. Multiplicativity cannot be extended polynomially}
+
+The proposed interpolation is not multiplicative for real indices. Already:
+
+
+\[
+\fitmath{f_{3/2}(x)^2-f_{9/4}(x)=\frac{x(x-2)}4.}
+\]
+
+
+More strongly, there is no family of polynomials $F_r\in\mathbb R[x]$ for all $r\geq1$ satisfying $F_2=x$ and $F_{rs}=F_rF_s$. Indeed, $F_{\sqrt2}^2=x$ would imply the impossible degree equation $2\deg F_{\sqrt2}=1$. This impossibility requires no continuity assumption.
+
+
+For the specific interpolation, $x=2$ is in fact the only real evaluation point at which $f_{rs}(x)=f_r(x)f_s(x)$ holds for all $r,s\geq1$. The identity above leaves only $x=0$ and $x=2$; $x=0$ fails for $r=3/2$, $s=2$, because $f_3(0)=1$, whereas $f_{3/2}(0)f_2(0)=0$.
+
+
+\section*{4. General Irreducibility with a Variable Parameter}
+
+Irreducibility must always be stated relative to a field. For irrational $r$, $f_r$ does not lie in $\mathbb Q[x]$. By Theorem 1, the natural coefficient field is exactly $K_r=\mathbb Q(r)$. Over $\mathbb R$, by contrast, every polynomial of degree at least 3 is reducible.
+
+
+\subsection*{Lemma 7. Coprimality of neighboring support polynomials}
+
+\[
+\fitmath{\gcd(f_a,f_b)=f_{\gcd(a,b)},\qquad\gcd(f_n,f_{n+1})=1.}
+\]
+
+
+\textbf{Proof.} By [1], the prime-index polynomials are monic, irreducible, and pairwise distinct; the last property follows from $f_p(2)=p$. Hence, in the unique factorization, the gcd selects exactly the smaller prime exponents.
+
+
+\subsection*{Theorem 8. Generic and transcendental irreducibility}
+
+For every $n\geq1$, the parameter polynomial
+
+
+\[
+\fitmath{F_n(T,x)=f_n(x)+T\bigl(f_{n+1}(x)-f_n(x)\bigr)}
+\]
+
+
+is irreducible in $\mathbb Q(T)[x]$. Consequently, for every transcendental $r\geq1$, the polynomial $f_r$ is irreducible over $\mathbb Q(r)$.
+
+
+\textbf{Proof.} Set $A=f_n$ and $C=f_{n+1}-f_n$. By Lemma 7, $\gcd(A,C)=1$. In $\mathbb Q[x,T]$, $A+TC$ has degree 1 in $T$. In a nontrivial factorization, one factor would have degree 0 in $T$ and hence would be a nonconstant polynomial in $x$ dividing both $A$ and $C$. This is impossible. Moreover, the content with respect to $x$ is a unit in $\mathbb Q[T]$: a nonconstant common divisor of all coefficients would, because of their affinity in $T$, have to be linear and force an identity $A=-t_0C$. Then the monic polynomials $A$ and $f_{n+1}$ would be proportional and hence equal, contradicting their evaluation at 2. Gauss's lemma yields the assertion over $\mathbb Q(T)$. For transcendental $t=r-n$, the substitution $T\mapsto t$ is a field isomorphism $\mathbb Q(T)\cong\mathbb Q(t)=\mathbb Q(r)$.
+
+
+\subsection*{Theorem 9. Rational irreducible parameters are dense}
+
+Every nonempty open subinterval of $(n,n+1)$ contains infinitely many rational $r$ for which $f_r$ is irreducible over $\mathbb Q$.
+
+
+\textbf{Proof using a classical input theorem.} We use the integer form of Hilbert's irreducibility theorem [4]: an irreducible polynomial in $\mathbb Q(U)[x]$ can be specialized irreducibly at infinitely many integer values of $U$, while avoiding a prescribed nonzero exclusion polynomial. Choose a rational number $a$ in the desired subinterval for $t$. The rational change of variable $T=a+1/U$ preserves irreducibility. Thus $F_n(a+1/u,x)$ is irreducible for infinitely many integers $u\ne0$. Along a subsequence these values satisfy $|u|\to\infty$ and $a+1/u\to a$; therefore infinitely many lie in the desired interval. This is the application of the classical theorem derived here, not an additional statement from the source.
+
+
+\section*{5. Before Primes: Elementary Criteria and Two Dense Classes}
+
+\subsection*{Theorem 10. A denominator criterion without Hilbert}
+
+Let $p$ be an odd prime and $r=p-1+a/b$ with $0<a<b$ and $\gcd(a,b)=1$. If the denominator $b$ has a prime divisor $q$ with $v_q(b)=1$, then $f_r$ is irreducible over $\mathbb Q$.
+
+
+\textbf{Proof.} Write $P=f_{p-1}$ and $d=\deg P\geq1$. Then $P$ is monic and $P(0)=0$. Up to the rational factor $1/b$, $f_r=bP+a$. The reciprocal polynomial is:
+
+
+\[
+\fitmath{H(x)=x^d\bigl(bP(1/x)+a\bigr).}
+\]
+
+
+Its leading coefficient is $a$, all remaining coefficients are divisible by $q$, and its constant coefficient is $b$, which is not divisible by $q^2$. Eisenstein's criterion at $q$ proves the irreducibility of $H$ and hence of $f_r$. Since rational numbers with prime denominators are dense in $(0,1)$, Theorem 9 is obtained here by an elementary argument.
+
+
+\subsection*{Theorem 11. Complete rational classification in (16,17)}
+
+Since $f_{16}=x^4$ and $f_{17}=x^4+1$, for $0<t<1$:
+
+
+\[
+\fitmath{f_{16+t}(x)=x^4+t.}
+\]
+
+
+For rational $t>0$, the exact equivalence is:
+
+
+\[
+\fitmath{x^4+t\text{ reducible over }\mathbb Q\quad\Longleftrightarrow\quad t=4q^4\text{ for some }q\in\mathbb Q.}
+\]
+
+
+In this case the factorization is:
+
+
+\[
+\fitmath{x^4+4q^4=(x^2-2qx+2q^2)(x^2+2qx+2q^2).}
+\]
+
+
+\textbf{Proof of necessity.} Since $x^4+t$ is positive for real $x$, it has no rational linear factor. Every rational factorization therefore consists of two monic quadratic factors. Write them as $(x^2+ax+b)(x^2-ax+d)$. Comparing coefficients gives $a(d-b)=0$, $b+d=a^2$, and $bd=t>0$. The case $a=0$ would force $d=-b$ and $bd\leq0$. Hence $d=b=a^2/2$ and $t=a^4/4=4(a/2)^4$.
+
+
+\textbf{Density of both classes.} The map $q\mapsto4q^4$ sends rational $q$ with $0<q<1/\sqrt2$ onto a dense subset of $(0,1)$. Thus reducible rational parameters are dense in $(16,17)$. Irreducible rational parameters are dense there as well, for example by Theorem 10 using prime denominators. Reducibility on this interval therefore cannot be inferred from an open range of the real parameter.
+
+
+The example $r=65/4$ gives:
+
+
+\[
+\fitmath{f_{65/4}(x)=x^4+\frac14=(x^2-x+\tfrac12)(x^2+x+\tfrac12).}
+\]
+
+
+It is reducible over $\mathbb Q$, but has no real zeros and is squarefree. Hence density of reducible parameters implies neither density of multiple zeros nor density of real zeros.
+
+
+\section*{6. Multiple Zeros: Finitely Many Exceptions per Cell}
+
+\subsection*{Theorem 12. Critical values of a rational quotient}
+
+Set $A=f_n$, $B=f_{n+1}$, and $D=\max(\deg A,\deg B)$. In $(n,n+1)$ there are at most $2D-2$ parameters for which $f_r$ is not squarefree. All such parameters are algebraic.
+
+
+\textbf{Proof and computational procedure.} A multiple zero $z$ of $(1-t)A+tB$ satisfies both the polynomial equation and its derivative. Since $\gcd(A,B)=1$, both $A(z)$ and $B(z)$ are nonzero. Eliminating $t$ gives:
+
+
+\[
+\fitmath{W_n(z)=0,\qquad W_n(x)=A'(x)B(x)-A(x)B'(x),\qquad t=\frac{A(z)}{A(z)-B(z)}.}
+\]
+
+
+The polynomial $W_n$ is not identically zero because $A/B$ is not constant. Its degree is at most $2D-2$: when the degrees are equal, the leading terms cancel; when they differ, the sum of the two degrees is at most $2D-1$. Each of its at most $2D-2$ complex zeros can yield at most one parameter. The values are algebraic because $W_n$ has rational coefficients. For the real exceptions, only values $0<t<1$ are retained. Conversely, every zero of $W_n$ for which the quotient is defined and yields such a $t$ indeed gives a multiple zero.
+
+
+This permits an exact investigation of the transitions: determine the zeros of $W_n$, evaluate the rational quotient, and select the real values in the unit interval.
+
+
+\subsection*{Examples with complete calculations}
+
+On $(3,4)$, $f_{3+t}=t x^2+(1-t)x+(1-t)$, with discriminant $(1-t)(1-5t)$. The only interior multiple zero occurs at $t=1/5$. On $(5,6)$, $f_{5+t}=x^2+tx+1-t$, with discriminant $t^2+4t-4$. On $(6,7)$, $f_{6+t}=x^2+x+t$.
+
+
+\begin{center}
+
+\renewcommand{\arraystretch}{1.35}
+
+\begin{tabular}{p{0.19\textwidth}p{0.43\textwidth}p{0.29\textwidth}}
+
+\hline
+
+Parameter $r$ & Polynomial / factorization & Property \\
+
+\hline
+
+$16/5$ & $\frac15(x+2)^2$ & rational double zero \\
+
+$3+2\sqrt2$ & $(x+\sqrt2-1)^2$ & algebraic irrational parameter \\
+
+$25/4$ & $(x+\frac12)^2$ & rational double zero \\
+
+$35/6$ & $(x+\frac13)(x+\frac12)$ & two distinct rational zeros \\
+
+\hline
+
+\end{tabular}
+
+\end{center}
+
+The second example explicitly shows that algebraic irrational parameters can yield reducible polynomials over their coefficient field. By contrast, on the interval $(4,5)$, $f_r=x^2+(r-4)$ is irreducible over every real subfield containing $r$: it has no real zero.
+
+
+\section*{7. The Half-Plane Bound and Its Drastic Limitation}
+
+\subsection*{Theorem 13. The bound persists immediately before primes}
+
+For every odd prime $p$ and every $p-1\leq r\leq p$, every complex zero of $f_r$ has real part less than $3/2$.
+
+
+\textbf{Proof.} From [1], for $\operatorname{Re}z\geq3/2$ we have the estimate $|f_p(z)|>2$. Hence $|f_{p-1}(z)|=|f_p(z)-1|>1$. For $f_r=f_{p-1}+t$ with $0\leq t\leq1$, one obtains $|f_r(z)|\geq|f_{p-1}(z)|-t>0$.
+
+
+\subsection*{Theorem 14. Real parts are unbounded in the full real family}
+
+There exist $r_j\in(512,513)$ with $r_j\to513$ and zeros $z_j$ of $f_{r_j}$ such that $\operatorname{Re}z_j\to+\infty$. Thus the half-plane bound for the integer family does not extend to all interpolated polynomials.
+
+
+\textbf{Proof.} We have:
+
+
+\[
+\fitmath{f_{512}(x)=x^9,\qquad f_{513}(x)=(x+1)^3(x^3+2x^2+x+1)=Q(x).}
+\]
+
+
+\[
+\fitmath{Q(x)=x^6+5x^5+10x^4+11x^3+8x^2+4x+1.}
+\]
+
+
+For $r=513-\varepsilon$, $0<\varepsilon<1$, the interpolation is:
+
+
+\[
+\fitmath{f_r(x)=\varepsilon x^9+(1-\varepsilon)Q(x),\qquad \lambda=\left(\frac{1-\varepsilon}{\varepsilon}\right)^{1/3}.}
+\]
+
+
+After substituting $x=\lambda z$ and dividing by $(1-\varepsilon)\lambda^6$, one obtains:
+
+
+\[
+\fitmath{\frac{f_r(\lambda z)}{(1-\varepsilon)\lambda^6}=z^9+z^6+\frac5\lambda z^5+\frac{10}{\lambda^2}z^4+\frac{11}{\lambda^3}z^3+\frac8{\lambda^4}z^2+\frac4{\lambda^5}z+\frac1{\lambda^6}.}
+\]
+
+
+As $\varepsilon\to0$, this polynomial converges coefficientwise to $z^6(z^3+1)$. Its three nonzero zeros are simple. By continuity of simple polynomial zeros, three zeros therefore lie asymptotically at the three cube roots of $-1$, multiplied by $\lambda$. In particular, for two conjugate zeros:
+
+
+\[
+\fitmath{z_\pm(\varepsilon)=\lambda\bigl(e^{\pm i\pi/3}+o(1)\bigr),\qquad \operatorname{Re}z_\pm(\varepsilon)=\lambda\bigl(\tfrac12+o(1)\bigr)\longrightarrow+\infty.}
+\]
+
+
+This is an analytic proof, independent of the numerical computation. The mechanism is the degree drop from 9 to 6 at the right boundary of the cell.
+
+
+\begin{center}
+
+\renewcommand{\arraystretch}{1.35}
+
+\begin{tabular}{p{0.26\textwidth}p{0.65\textwidth}}
+
+\hline
+
+$\varepsilon=513-r$ & Numerically found zero in the upper half-plane \\
+
+\hline
+
+$10^{-1}$ & $2.24420+2.06969i$ \\
+
+$10^{-3}$ & $6.53951+8.79709i$ \\
+
+$10^{-6}$ & $51.65523+86.62117i$ \\
+
+\hline
+
+\end{tabular}
+
+\end{center}
+
+The numbers illustrate the proved asymptotic behavior. They are not certified enclosures; the relative numerical residuals in these computations are below $2\cdot10^{-15}$.
+
+
+\begin{figure}[htbp]
+
+\centering
+
+\includegraphics[width=\textwidth]{pratt-zeros-en.png}
+
+\caption{Left: collision and splitting of the zeros in the cell $[3,4]$. Right: numerical illustration of the analytically proved escape as $r\to513^-$.}
+
+\end{figure}
+
+\section*{8. Sharp Power Bounds for Positive x}
+
+\subsection*{Theorem 15. Comparison with linearly interpolated powers}
+
+For fixed $x>0$, set $c=\log_2 x$ and define the polygonal power function:
+
+
+\[
+\fitmath{L_c(r)=(1-t)n^c+t(n+1)^c.}
+\]
+
+
+Then, for all $r\geq1$, the following bounds hold:
+
+
+\[
+\fitmath{0<x\leq2:\quad L_c(r)\leq f_r(x)\leq r.}
+\]
+
+
+\[
+\fitmath{x\geq2:\quad r\leq f_r(x)\leq L_c(r).}
+\]
+
+
+\textbf{Proof.} For integer indices, the relevant power bound is proved by strong induction. Equality holds at 1 and 2. In the product case, the bounds are preserved by multiplication. In the prime case, for $c\geq1$ one uses the inequality $1+(p-1)^c\leq p^c$. For $0\leq c\leq1$ the reverse inequality holds, and for $c<0$ one has $1+(p-1)^c>1>p^c$. The other bound in each case follows from monotonicity in $x$ and $f_n(2)=n$. Convex combinations yield the stated real bounds.
+
+
+For $x\ne2$, the power bound at an integer index is an equality exactly for powers of two. In an open cell it is identically an equality only on $(1,2)$, because there both support indices are powers of two.
+
+
+\textbf{Important distinction.} $L_c(r)$ must not in general be replaced by $r^c$. For example, $f_{3/2}(4)=5/2>(3/2)^2$, whereas $f_{3/2}(\sqrt2)=(1+\sqrt2)/2<\sqrt{3/2}$.
+
+
+Since $L_c(r)/r^c\to1$ and $f_{2^j}(x)=x^j$, the sharp asymptotic statements follow:
+
+
+\[
+\fitmath{x>2:\quad \limsup_{r\to\infty}\frac{\log f_r(x)}{\log r}=\log_2 x.}
+\]
+
+
+\[
+\fitmath{0<x<2:\quad \liminf_{r\to\infty}\frac{\log f_r(x)}{\log r}=\log_2 x.}
+\]
+
+
+The other limiting quantity in each case is not determined in this note.
+
+
+\section*{9. A Probabilistic Interpretation}
+
+\subsection*{Theorem 16. Normalization as a generating function}
+
+For every $r\geq1$,
+
+
+\[
+\fitmath{G_r(z)=\frac{f_r(2z)}r}
+\]
+
+
+is the probability generating function of a nonnegative integer-valued random variable $J_r$. Writing $f_r(x)=\sum_j a_jx^j$, its distribution is:
+
+
+\[
+\fitmath{\Pr(J_r=j)=\frac{a_j2^j}r,\qquad \sum_j\Pr(J_r=j)=1.}
+\]
+
+
+\textbf{Arithmetic structure.} For integers $a,b$, $G_{ab}=G_aG_b$; hence $J_{ab}$ can be realized as the sum of independent random variables distributed as $J_a$ and $J_b$. For odd primes:
+
+
+\[
+\fitmath{G_p(z)=\frac1p+\frac{p-1}{p}G_{p-1}(z),\qquad G_2(z)=z.}
+\]
+
+
+For a real index, the interpolation is a mixture with probabilities weighted by evaluation:
+
+
+\[
+\fitmath{G_{n+t}(z)=\frac{(1-t)n}{n+t}G_n(z)+\frac{t(n+1)}{n+t}G_{n+1}(z).}
+\]
+
+
+Thus the mixture weights are generally not simply $1-t$ and $t$.
+
+
+\textbf{Derivatives and moments.} We have:
+
+
+\[
+\fitmath{\mathbb E[J_r]=\frac{2f'_r(2)}r,\qquad \operatorname{Var}(J_r)=\frac{4f''_r(2)+2f'_r(2)}r-\left(\frac{2f'_r(2)}r\right)^2.}
+\]
+
+
+For integer indices, $\mu(n)=2f'_n(2)/n$ is completely additive: $\mu(ab)=\mu(a)+\mu(b)$. Moreover, $\mu(2)=1$ and $\mu(p)=(p-1)\mu(p-1)/p$ for odd primes. This connects the polynomials with another arithmetic function.
+
+
+\textbf{Logarithmic convexity.} For fixed $r$, the map $u\mapsto\log f_r(2e^u)$ is convex. Its second derivative is the variance of the distribution of $J_r$ reweighted by $e^{uj}$. In particular, the elasticity $x f'_r(x)/f_r(x)$ is monotone nondecreasing for $x>0$. These statements follow from the finite sum of positive exponential functions and are exact properties, not statistical conjectures.
+
+
+\section*{10. Consequences for All Real Indices}
+
+The interpolation between all integer support points specified in Section 1 is equivalent to:
+
+
+\[
+\fitmath{f_r(x)=r\quad(0\leq r\leq1),\qquad f_{-r}(x)=-f_r(x)\quad(r\geq0).}
+\]
+
+
+Thus the extended family is defined on all of $\mathbb R$, is continuous, is odd in the index, and still satisfies $f_r(2)=r$. For negative $r$, its coefficients are nonpositive; for $|r|>1$, $f_r$ and $f_{|r|}$ have the same zeros and the same irreducibility behavior over $\mathbb Q(r)$. In particular, the transcendental irreducibility theorem holds for $|r|>1$. For $0<|r|\leq1$, $f_r$ is a nonzero constant polynomial, hence a unit and not an irreducible element; at $r=0$, it is the zero polynomial.
+
+
+For this complete real family, the coefficient-field identity $\mathbb Q(\text{coefficients of }f_r)=\mathbb Q(r)$ holds for every real index, including $r=0$. The parameter map remains injective by evaluation at 2. All statements about zeros for $|r|>1$ carry over through the symmetry $r\mapsto-r$.
+
+
+\section*{11. Complex Definition via Real and Imaginary Parts}
+
+For $z=a+ib$ with $a,b\in\mathbb R$, we now define, as proposed:
+
+
+\[
+\fitmath{f_z(x)=f_a(x)+i f_b(x)\in\mathbb C[x].}
+\]
+
+
+The argument $x$ remains the polynomial variable; $z$ is the new complex index. For real $z$, because $f_0=0$, this definition agrees exactly with the real family.
+
+
+\subsection*{Theorem 17. Evaluation, symmetries, and positive arguments}
+
+For every complex index:
+
+
+\[
+\fitmath{f_z(2)=z,\qquad f_{-z}(x)=-f_z(x),\qquad f_{iz}(x)=i f_z(x).}
+\]
+
+
+\[
+\fitmath{f_{\overline z}(x)=\overline{f_z(\overline x)}.}
+\]
+
+
+The last equation is a statement about the conjugated coefficients; for real $x$, the right-hand side may simply be written as $\overline{f_z(x)}$. From $f_z(2)=z$, injectivity in the index follows again. For $z\ne0$ and real $x>0$, $f_z(x)\ne0$, and the signs of its real and imaginary parts agree respectively with those of $a$ and $b$. Moreover:
+
+
+\[
+\fitmath{f_z(0)=0\quad\Longleftrightarrow\quad z\in2\mathbb Z+2i\mathbb Z.}
+\]
+
+
+\textbf{Proof.} The evaluation follows from the two real evaluations. Oddness gives $f_{iz}=f_{-b}+if_a=-f_b+if_a=i f_z$. The conjugation identity follows from the real coefficients of $f_a$ and $f_b$. For positive $x$, every nonzero $f_a(x)$ has the sign of $a$, including on the constant interval $|a|\leq1$. Thus both parts can vanish simultaneously only when $a=b=0$. For the constant term, one uses the triangular function and its odd extension.
+
+
+\subsection*{Theorem 18. Holomorphy: exact criterion on each open grid cell}
+
+For every integer $n$, define the slope polynomial $D_n=f_{n+1}-f_n$. In the rectangle $n<a<n+1$, $m<b<m+1$:
+
+
+\[
+\fitmath{\frac{\partial f_z(x)}{\partial z}=\frac{D_n(x)+D_m(x)}2,\qquad \frac{\partial f_z(x)}{\partial\overline z}=\frac{D_n(x)-D_m(x)}2.}
+\]
+
+
+For a fixed complex argument $x$, the index function is holomorphic on this rectangle if and only if $D_n(x)=D_m(x)$. As a polynomial-valued map, it is holomorphic there if and only if the slope polynomials $D_n$ and $D_m$ are identical. In that case it is even affine in $z$.
+
+
+\textbf{Proof.} The real partial derivatives are $\partial_a f_z=D_n$ and $\partial_b f_z=iD_m$. The two formulas are the definition of the Wirtinger derivatives. The Cauchy-Riemann condition is exactly the vanishing of the second derivative.
+
+
+\textbf{Global consequence.} For fixed $x$, the map $z\mapsto f_z(x)$ is holomorphic on all of $\mathbb C$ if and only if $x=2$. Already on the rectangle $1<a<2$, $0<b<1$, one has $D_1=x-1$ and $D_0=1$, so $\partial_{\overline z}f_z(x)=(x-2)/2$. At $x=2$, by contrast, the function is exactly the identity $z\mapsto z$. Thus the complex extension is continuous and piecewise real-affine, but as a family of polynomials it is not a global holomorphic extension in the index.
+
+
+At the same time, there are many individual holomorphic rectangles. For example, $D_{p-1}=1$ immediately before every odd prime; in addition, $D_{-1}=D_0=1$. Hence in the square $|a|<1$, $|b|<1$, one simply has $f_z(x)=z$.
+
+
+\subsection*{Theorem 19. The complex coefficient field and a transcendental counterexample}
+
+Let $K_z$ denote the field over $\mathbb Q$ generated by the coefficients of $f_z$. In general, only:
+
+
+\[
+\fitmath{\mathbb Q(z)\subseteq K_z\subseteq\mathbb Q(a,b,i).}
+\]
+
+
+The first inclusion follows from evaluation at 2, the second from the definition. Unlike in the real case, $K_z$ need not equal $\mathbb Q(z)$. For example, if $2<a,b<3$, then $f_z=(1+i)x+z-2-2i$, so $K_z=\mathbb Q(i,z)$; for transcendental $z$, this is strictly larger than $\mathbb Q(z)$, since the elements of the latter that are algebraic over $\mathbb Q$ are exactly the rational numbers.
+
+
+Likewise, irreducibility for transcendental real indices does not generally carry over to transcendental complex indices. Choose a transcendental real number $t$ with $1/3<t<2/3$, for example $t=\pi/6$, and set:
+
+
+\[
+\fitmath{z=3+t+i(3t-1).}
+\]
+
+
+Then the real part lies in $(3,4)$ and the imaginary part in $(0,1)$. The complex definition gives the exact factorization:
+
+
+\[
+\fitmath{f_z(x)=t x^2+(1-t)x+1-t+i(3t-1)=t(x+1-i)(x-2+1/t+i).}
+\]
+
+
+Here $K_z=\mathbb Q(t,i)$: the leading coefficient yields $t$, and the constant coefficient, after division by $3t-1\ne0$, also yields $i$. The index $z$ is transcendental, since if it were algebraic then $t=(z-3+i)/(1+3i)$ would also be algebraic. Nevertheless, $f_z$ is reducible over its actual coefficient field.
+
+
+The behavior already changes for an algebraic purely imaginary index: $f_{5i}=i(x^2+1)$ factors over $K_{5i}=\mathbb Q(i)$ into the linear factors $i(x-i)(x+i)$, even though $f_5$ is irreducible over $\mathbb Q$. For complex indices, both the field and the specific parameter relation must therefore be taken into account.
+
+
+\section*{12. Transfer to the Multivariate Family}
+
+For a fixed base threshold $k$ from [1], the same interpolation can be used:
+
+
+\[
+\fitmath{f_{r,k}=(1-t)f_{n,k}+t f_{n+1,k}.}
+\]
+
+
+At the distinguished prime point, $f_{r,k}(q_1,\ldots,q_{\pi(k+1)})=r$. Nonnegative coefficients, injectivity, and the coefficient field $\mathbb Q(r)$ are preserved. Since [1] identifies the prime-index polynomials as pairwise distinct irreducible elements, neighboring support polynomials are also coprime in the multivariate setting. The linear-parameter proof from Theorem 8 therefore likewise yields irreducibility of $f_{r,k}$ over $\mathbb Q(r)$ for transcendental $r\geq1$. Gauss's lemma and the arguments concerning coefficient content apply identically in several variables.
+
+
+The explicit statements about complex zeros and the degree drop in Section 7, however, concern the univariate family.
+
+
+\section*{13. Computational Verification and Further Questions}
+
+The integer recursion was generated up to $n=1200$ with exact coefficients. Evaluation at 2, the constant term, monicity, coefficient signs, and the degree bound were checked, together with 500 neighboring gcd identities and 1200 product identities. The stated rational factorizations and the multiplicativity defect were verified using exact rational arithmetic. In addition, 111 cases of the real sign symmetry and the complex rotation and conjugation symmetries were checked, as well as three rational substitutions into the general complex factorization with Gaussian rational coefficients. Numerical zero computations served solely to illustrate the independently proved escape mechanism.
+
+
+The following questions are not settled here and are natural directions for further investigation:
+
+
+\begin{itemize}
+
+\item A classification of the algebraic parameters for which $f_r$ is reducible over $\mathbb Q(r)$, beyond the fully treated quartic cell $(16,17)$.
+
+\item The Galois groups and branch values of the rational quotient $f_n/(f_n-f_{n+1})$. Generic irreducibility alone does not determine the Galois group.
+
+\item The number of negative real zeros on the subintervals between the critical values determined by $W_n$.
+
+\item The second extremal growth exponent: the liminf for $x>2$ and, respectively, the limsup for $0<x<2$.
+
+\end{itemize}
+
+For the complex extension, further questions include classifying the holomorphic grid cells and the coefficient fields, as well as irreducibility under algebraic relations between the real and imaginary parts. The explicit transcendental counterexample shows that this classification cannot depend on the word “transcendental” alone.
+
+
+\clearpage
+
+\section*{References}
+
+[1] O. Leka, Multivariate Pratt Polynomials: Irreducibility by Induction on the Base Threshold, 27 September 2026. Attached PDF and TeX version; in particular Sections 2 and 5.
+
+
+[2] O. Leka, Infinitely Many Irreducible Substitutions in a Recursively Defined Polynomial Family, September 2026. Attached PDF and TeX version; in particular hypothesis (PI) and the Infinite-substitution theorem.
+
+
+[3] J. Love, Answer of 11 December 2024 to O. Leka's question on MathOverflow, Polynomials for natural numbers and irreducible polynomials for prime numbers? Original half-plane proof. \url{https://mathoverflow.net/a/483912}
+
+
+[4] A. Bodin, P. Dèbes, J. König and S. Najib, The Hilbert-Schinzel specialization property, arXiv:2009.07254v2, 2021. For the classical Hilbert theorem over the fraction field used here and its integer form, see the introduction, Definition 4.1, and the discussion of Hilbertian rings. \url{https://arxiv.org/abs/2009.07254}
+
+
+\end{document}
